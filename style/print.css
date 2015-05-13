@@ -1,0 +1,56 @@
+@CHARSET "ISO-8859-1";
+@import "reset.css";
+@import "fonts.css";
+
+html {
+	background: #fff;
+}
+body {
+	font-size: 11px;
+	font-family: Roboto, sans-serif;
+}
+/* Table */
+table {
+	margin-top: 10px;
+	width: 100%;
+	vertical-align: middle;
+	border: 1px solid black;
+}
+
+tr {
+	border: 1px solid black;
+}
+
+th {
+	word-wrap: break-word;
+	vertical-align: middle;
+	border: 1px solid black;
+
+}
+
+td {
+	padding: 0.2em 0 0.3em 0;
+	min-width: 20px;
+	text-align: center;
+	vertical-align: middle;
+	border: 1px solid black;
+}
+
+.big-border {
+	border-top:2px solid black;
+}
+
+/* Small Text and Subscribe */
+
+.subscribe {
+	margin-top: 1.8em;
+	padding-bottom: 0.3em;
+	width: 50%;
+	border-bottom: 1px solid black;
+}
+
+.small {
+	margin-top: 1em;
+	font-size: 9px;
+}
+
