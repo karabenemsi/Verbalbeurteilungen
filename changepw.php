@@ -1,44 +1,41 @@
 <?php
 include ('auth.php');
-include ('structure/dbconnect.php');
-include ('structure/header1.php');
-echo '<title>Passwort &auml;ndern</title>';
-// Header
-include ('structure/header2.php');
+include 'functions.php';
+getheader('Passwort &auml;ndern',$db);
 
 // Body
 $error = '';
 
 if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
-	
+
 	$pwold = $_POST ['oldpassword'];  //String with old pw
 	$pwnew = $_POST ['newpassword'];	//String with new pw
 	$pwrepeat = $_POST ['repeatpassword']; //String with new pw
 	$change = false;
-	
+
 	$lehrerid = $_SESSION ['L_ID']; //Int with Lehrer-ID
-	
+
 	// Query for USER
 	$queryPW = "SELECT L_PW FROM vb_logindata WHERE L_ID=" . $lehrerid . "";
 	$result = mysqli_query ( $db, $queryPW );
-	
+
 	// Make Array out of $result
 	while ( $row = $result->fetch_array () ) {
 		$rows [] = $row;
 	}
-	
+
 	// Get Arrays out of $rows
 	foreach ( $rows as $row ) {
 		$pwmd5 = $row [0];
 	}
-	
+
 	$result->close ();
-	
+
 	// Validate
 	if (md5 ( $pwold ) == $pwmd5) {
 		$change = true;
 	}
-	
+
 	if ($pwnew != $pwrepeat) {
 		$error = 'Das Wiederholte Passwort stimmt nicht &uuml;berein';
 	} elseif ($change == false) {
@@ -66,6 +63,7 @@ echo '
 			<form>
 		<p> ' . $error . '</p></div>';
 //Footer
-include ('structure/footer.php');
+mysqli_close($db);
+getfooter();
 
 ?>

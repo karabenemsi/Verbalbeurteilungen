@@ -1,14 +1,11 @@
 <?php
 include ('authadmin.php');
-include ('structure/dbconnect.php');
-include ('structure/header1.php');
-?>
-<?php
-echo '<title>Customize</title>';
-// Header
-include ('structure/header2.php');
+include 'settings.php';
+include 'functions.php';
+getheader('Customize');
 
 // Body
+exit('Still being build');
 
 $query = 'SELECT distinct FZ_Klasse FROM vb_fachzuweisung';
 $result = mysqli_query ( $db, $query );
@@ -17,7 +14,7 @@ while ( $row = $result->fetch_array () ) {
 }
 $i = 0;
 foreach ( $rows as $value ) {
-	
+
 	$class [$i] = $value [0]; // $class contains the classes
 	$i ++;
 }
@@ -26,8 +23,8 @@ for($i = 0; $i < sizeof ( $class ); $i ++) {
 	$results = 0;
 	$rows1 = [ ];
 	$row1 = 0;
-	$query2 = "SELECT  S_Nr, S_Vorname, S_Name FROM vb_schueler WHERE S_Klasse='" . $class [$i] . "'";
-	
+	$query2 = "SELECT  S_ID, S_prename, S_name FROM vb_schueler WHERE S_class='" . $class [$i] . "'";
+
 	$results = mysqli_query ( $db, $query2 );
 	if (empty ( $results )) {
 		echo 'Datenbankfehler';
@@ -37,9 +34,9 @@ for($i = 0; $i < sizeof ( $class ); $i ++) {
 		$rows1 [] = $row1;
 	}
 	$j = 0;
-	
+
 	foreach ( $rows1 as $value1 ) {
-		
+
 		$arrstudents [$i] [$j] [0] = $value1 [0];
 		$arrstudents [$i] [$j] [1] = $value1 [1];
 		$arrstudents [$i] [$j] [2] = $value1 [2];
@@ -66,5 +63,6 @@ echo '
 	</div><!--Box-->';
 
 // Footer
-include ('structure/footer.php');
+mysqli_close($db);
+getfooter();
 ?>

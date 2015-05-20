@@ -1,14 +1,9 @@
 <?php
-?><?php
 include ('../authadmin.php');
-include ('../structure/dbconnect.php');
-include ('../structure/header1.php');
-?>
+include '../functions.php';
 
-<?php
-echo '<title>Change</title>';
-// Header
-include ('../structure/header2.php');
+
+getheader();
 
 // Body
 echo '
@@ -20,5 +15,6 @@ echo '
 		</div>';
 
 // Footer
-include ('../structure/footer.php');
+mysqli_close($db);
+getfooter();
 ?>

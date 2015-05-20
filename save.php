@@ -1,5 +1,6 @@
 <?php
-include ('structure/dbconnect.php');
+include ('dbconnect.php');
+
 
 $id=$_GET['id'];
 $name=$_GET['changed'];
@@ -8,8 +9,8 @@ $subject =$_GET['sub'];
 if (($subject == 'Religion evangelisch') || ($subject == 'Religion katholisch')) {
 			$subject = 'Religion';
 		}
-	
-		
+
+
 $mark;
 $cat;
 if ($name<20){
@@ -169,7 +170,58 @@ elseif ($name<50) {
 
 }
 
-$query="UPDATE `vb_schueler` SET `S_" . $subject . "_" . $cat . "` = '" . $mark . "' WHERE `vb_schueler`.`S_Nr` = " . $id . ";";
+// Get string with marks
+$query = 'SELECT S_ID, S_marks FROM vb_schueler WHERE S_ID=' . $id ;
+$result3 = mysqli_query ( $db, $query );
+
+while ( $row3 = $result3->fetch_array () ) {
+	$rows3 [] = $row3;
+}
+
+foreach ( $rows3 as $value3 ) {
+	$temp_id = $value3 [0];
+	$temp_markscsv = $value3 [1];
+
+
+//Tear string to shreds
+
+if (!($temp_markscsv == '')) {
+
+	$temparr_marks = explode(';', $temp_markscsv);
+}
+$k=0;
+foreach ($temparr_marks as $value) {
+	$arrmarks[$k] = str_split($value);
+	$k++;
+}
+
+}
+unset($temparr_marks);
+unset($temp_id);
+unset($temp_marks);
+unset($temparr_marks);
+
+
+//Insert mark
+if (strpos($subject,'religion') !== FALSE) {
+
+	$arrmarks [$RELIGION['subreligion']] [$cat-1] = $mark;
+
+} else {
+	$arrmarks [$subject] [$cat-1] = $mark;
+}
+
+//Reasamble string
+$finalmark = '';
+foreach ($arrmarks as $value) {
+		foreach ($value as $value2) {
+			$finalmark .= $value2;
+		}
+		$finalmark.=';';
+}
+
+//Fetch Query on Database
+ $query="UPDATE `vb_schueler` SET `S_marks` = '" . $finalmark . "' WHERE `vb_schueler`.`S_ID` = " . $id . ";";
 
 if (mysqli_query($db, $query)){
 	echo 'Saved';
