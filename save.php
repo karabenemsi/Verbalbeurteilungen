@@ -1,4 +1,5 @@
 <?php
+include 'settings.php';
 include ('dbconnect.php');
 
 

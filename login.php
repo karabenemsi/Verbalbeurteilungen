@@ -1,7 +1,6 @@
 <?php
-include ('settings.php');
-include ('functions.php');
-getheader('Login',$db);
+include 'settings.php';
+include 'dbconnect.php';
 
 $error= '';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -91,22 +90,96 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		}
 	}
 
+	$hostname= $_SERVER['HTTP_HOST'];
+?>
+	<!DOCTYPE html>
+	<html>
+		<head>
+			<meta charset="utf-8" >
+			<meta name="author" content="Florian Lubitz, Marcel Killinger, Leander Eger" >
+			<meta name="description" content="PHP and SQL based Application for students mark management" >
+			<meta name="keywords" content="Gymnasium Balingen, Verbalbeurteilungen, Unterstufe, Textbeurteilungen" >
+			<title>Login</title>
+			<link rel="stylesheet" type="text/css" href="//<?php echo $hostname; ?>/style/style.css" />
+			<link rel="shortcut icon" href="//<?php echo $hostname; ?>/pictures/site/favicon.ico" type="image/x-icon">
+			<link rel="icon" href="//<?php echo $hostname; ?>/pictures/site/favicon.ico" type="image/x-icon">
+			<script type="text/javascript"
+				src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js?ver=1.4.2"></script>
+			<!--<script type="text/javascript"
+				src="//<?php echo $hostname; ?>/script/jquery-2.1.3.min.js"></script>-->
+			<script type="text/javascript" src="//<?php echo $hostname; ?>/script/main.js"></script>
+		</head>
 
-echo '<div class="container login">
+		<body>
+			<div class="wrapper">
+
+			<header>
+			<h1 id="header_title"><a href="//<?php echo $hostname; ?>/index.php"> <?php echo SITEHEADING; ?></a></h1>
+			<div id="ajaxrequest"></div>
+
+
+			<input type="checkbox" id="menu" class="checkboxmenu">
+			<label for="menu" onclick></label>
+			<nav role="off-canvas">
+			    <ul>
+					<li><a href="//<?php echo $hostname; ?>/index.php">Home</a></li>';
+				</ul>
+			</nav>
+			<nav>
+				<ul>
+					<li class = "cat1">
+						<a href="//<?php echo $hostname; ?>/index.php">Home</a>
+					</li>
+
+	           	 	</ul>
+	       	 	</nav>
+
+			</header>
+
+			<div id="margin_box_top" >
+			</div>
+
+
+			<div class="content">
+<div class="container login">
 			<form action="login.php" method="post">
 			<input type="text" placeholder="Ihr K&uuml;rzel" name="user"></br>
 			<input type="password" placeholder="Passwort" name="password"></br>
 			<input type="submit" value="Login">
 			</form>
-			<p class="error">'. $error .'</p>
+			<p class="error"> <?php echo $error; ?></p>
 			<a href="login-data.php" target="_blank"><input type="submit" value="Login-Daten"></a>
 
 			</div>';
 
 
 
-
+<?php
 //Footer
 	mysqli_close($db);
-getfooter();
-	?>
+?>
+	<footer>
+
+		<div class="footercontent">
+			<img src="//<?php echo $hostname; ?>/pictures/site/Footer/Logo_FCG_003_400.png" width="100" alt="FlowR Logo" ><p>FlowR Coding</p>
+		</div>
+		<div class="footercontent">
+			<p><span id="copyright">Copyright: Marcel Killinger, Florian Lubitz, Leander Eger</span></p>
+		</div>
+		<div class="footercontent">
+			<p>
+
+					<img style="border:0;width:88px;height:31px"
+						src="//' .$_SERVER['HTTP_HOST'] . '/pictures/site/Footer/vcss-blue.gif"
+					alt="CSS ist valide!" />
+
+			</p>
+		</div>
+
+
+	</footer>
+</div>
+</div>
+
+</body>
+</html>
