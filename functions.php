@@ -1,5 +1,14 @@
 <?php
 
+// 1. DB-Connection
+// 2. getheader($title)
+// 3. getfooter()
+
+
+
+
+
+
 $db = mysqli_connect(DATABASE_HOST, DATABASE_USERNAME, DATABASE_PASSWORD, DATABASE_NAME);
 if(!$db)
 {
@@ -64,7 +73,7 @@ echo '
 				';
 // if (isset ( $_SESSION ['ADMIN'] )) {
 // 	if ($_SESSION ['ADMIN'] == 1) {
-// 		echo '<li><a href="//' . $_SERVER['HTTP_HOST'] . '/customize.php">Anpassen</a></li>
+// 		echo '<li><a href="//' . $_SERVER['HTTP_HOST'] . '/admintools.php">Admin</a></li>
 // 						';
 // 	}
 // }
@@ -94,7 +103,7 @@ echo '
 							';
 if (isset ( $_SESSION ['ADMIN'] )) {
 	if ($_SESSION ['ADMIN'] == 1) {
-		echo '<li><a href="//' . $_SERVER['HTTP_HOST'] . '/customize.php">Anpassen</a></li>
+		echo '<li><a href="//' . $_SERVER['HTTP_HOST'] . '/admintools.php">Admin</a></li>
 						';
 	}
 }

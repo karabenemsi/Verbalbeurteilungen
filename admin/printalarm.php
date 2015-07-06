@@ -2,7 +2,7 @@
 include ('../authadminorct.php');
 include '../settings.php';
 include '../functions.php';
-getheader('Drucken',$db);
+getheader('Drucken');
 
 // Body
 
@@ -57,7 +57,7 @@ for($i = 0; $i < $numofclasses; $i ++) {
 echo '
 	<div class="grid6_box">
 		<div class="grid6_row">
-			<div class="grid6_col-6" id="print">
+			<div class="grid6_col-6" style="background:#f3f3f3;color:#525252;">
 				<h1>Drucken</h1>
 				<h3>Sch&uuml;ler w&auml;hlen:</h3>
 					<div class="container">

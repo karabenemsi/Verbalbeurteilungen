@@ -39,6 +39,13 @@ h3 {
 	text-align: center;
 	font-size: 1.2em;
 }
+
+pre {
+	margin: 1em;
+}
+small {
+	font-size: smaller;
+}
 /*Links*/
 a {
 	text-decoration: none;
@@ -139,6 +146,11 @@ form {
 	background-color: #525252;
 }
 
+input[type="file"] {
+	padding: 0;
+	font-size: 1em;
+}
+
 .container p {
 	margin-top: 1em;
 	margin-bottom: 1em;
@@ -160,11 +172,11 @@ form {
 	background: #ffc20e !important;
 }
 
-.bg-7accc8 { /*Türkis*/
+.bg-7accc8 { /*Tï¿½rkis*/
 	background: #7accc8 !important;
 }
 
-.bg-76ee47 { /*Hellgrün*/
+.bg-76ee47 { /*Hellgrï¿½n*/
 	background: #76ee47 !important;
 }
 
@@ -593,12 +605,12 @@ footer {
 	.content {
 		font-size: 3em;
 	}
-	
+
 	header {
 		font-size: 2em;
 		height: 2.5em;
 	}
-	
+
 	#header_title {
 		margin-left: 2%;
 	}
@@ -642,22 +654,22 @@ footer {
 /*	Scrollbar */
 
 ::-webkit-scrollbar {
-    width: 10px;	    
+    width: 10px;
 }
- 
+
 
 ::-webkit-scrollbar-track {
     -webkit-box-shadow: none;
-    background: rgb(240,240,240); 
+    background: rgb(240,240,240);
 }
- 
+
 
 ::-webkit-scrollbar-thumb {
     -webkit-border-radius: 10px;
     border-radius: 10px;
-    background: rgba(68,68,68,0.8); 
-    -webkit-box-shadow: none; 
+    background: rgba(68,68,68,0.8);
+    -webkit-box-shadow: none;
 }
 ::-webkit-scrollbar-thumb:window-inactive {
-	background: rgba(68,68,68,0.4); 
+	background: rgba(68,68,68,0.4);
 }

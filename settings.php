@@ -44,7 +44,7 @@ $RELIGION = array(
     'subreligion' => 10, // !!Don't use '' in this case!! Which subject is religion in the list above? In the default/demo it's 11. If you got no subject religion set it to 0;
     'religion1' => 'katholisch',
     'religion2' => 'evangelisch',
-    'religion3' => 'Ethik'
+    'religion3' => 'ethik'
 );
 
 //The categories you want to rate your students. If you want to add,remove or manipulate please use the following pattern:
