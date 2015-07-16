@@ -90,7 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
       $linemysql = implode("','",$linearray);
-      $query = "INSERT INTO $databasetable VALUES('','$linemysql','');";
+      $query = "INSERT INTO $databasetable VALUES('','$linemysql','00000000;12342134;12342134;12342134;12342134;12342134;12342134;12342134;12342134;12342134;12342134;12342134;12342134');";
 
       $queries .= $query . "<br>";
 
