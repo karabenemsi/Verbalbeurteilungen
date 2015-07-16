@@ -88,9 +88,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $linearray[3] = '';
       }
 
+      // Create defaultmarks
+      $defaultmarks = '';
+      $start = true;
+      for ($i=0; $i < sizeof($SUBJECTS); $i++) {
+        if(!$start) {
+          $defaultmarks .= ';';
+        } else {
+          $start = false;
+        }
+        for ($j=0; $j < sizeof($CATEGORIES); $j++) {
+          $defaultmarks .= '0';
+        }
+      }
+
 
       $linemysql = implode("','",$linearray);
-      $query = "INSERT INTO $databasetable VALUES('','$linemysql','');";
+      $query = "INSERT INTO $databasetable VALUES('','$linemysql','$defaultmarks');";
 
       $queries .= $query . "<br>";
 
@@ -133,7 +147,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
           echo $v . '<br>';
         }
         ?>
-        Sind die Konfessionen anders eingetragen können sie von Hand geändert werden.
+        Sind die Konfessionen anders eingetragen können sie von Hand geändert werden.<br>
+        <span style="color:red;">Vor dem Import die settings.php einstellen</span>
       </h5>
       <div class="container">
         <form enctype="multipart/form-data" action="import.php" method="POST">
