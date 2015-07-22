@@ -30,7 +30,7 @@ if(!isset($title)){
 }
 echo '
 <!DOCTYPE html>
-<html>
+<html lang="de">
 	<head>
 		<meta charset="utf-8" >
 		<meta name="author" content="Florian Lubitz, Marcel Killinger, Leander Eger" >
@@ -135,20 +135,6 @@ function getfooter()
 						<div class="footercontent">
 							<img src="//' . $_SERVER['HTTP_HOST'] . '/pictures/site/Footer/Logo_FCG_003_400.png" width="100" alt="FlowR Logo" ><p>FlowR Coding</p>
 						</div>
-						<div class="footercontent">
-							<p><span id="copyright">Copyright: Marcel Killinger, Florian Lubitz, Leander Eger</span></p>
-						</div>
-						<div class="footercontent">
-							<p>
-
-	    							<img style="border:0;width:88px;height:31px"
-	       							 src="//' .$_SERVER['HTTP_HOST'] . '/pictures/site/Footer/vcss-blue.gif"
-	       							alt="CSS ist valide!" />
-
-							</p>
-						</div>
-
-
 					</footer>
 				</div>
 			</div>

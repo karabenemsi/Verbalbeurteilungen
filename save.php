@@ -29,6 +29,9 @@ if ($name<20){
 		case 14:
 		$mark=4;
 		break;
+		case 14:
+		$mark=4;
+		break;
 	}
 
 }elseif ($name<30) {
@@ -237,7 +240,6 @@ foreach ($arrmarks as $value) {
 	foreach ($value as $value2) {
 		$finalmark .= $value2;
 	}
-	$finalmark.=';';
 }
 
 //Fetch Query on Database

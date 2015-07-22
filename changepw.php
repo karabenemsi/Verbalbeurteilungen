@@ -1,5 +1,6 @@
 <?php
 include ('auth.php');
+include 'settings.php';
 include 'functions.php';
 getheader('Passwort &auml;ndern',$db);
 
@@ -26,13 +27,16 @@ if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
 
 	// Get Arrays out of $rows
 	foreach ( $rows as $row ) {
-		$pwmd5 = $row [0];
+		$pwdb = $row [0];
 	}
 
 	$result->close ();
 
+
+
+
 	// Validate
-	if (md5 ( $pwold ) == $pwmd5) {
+	if (password_verify($pwold, $pwdb)) {
 		$change = true;
 	}
 
@@ -43,20 +47,25 @@ if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
 	} elseif (empty ( $_POST ['oldpassword'] ) || empty ( $_POST ['newpassword'] ) || empty ( $_POST ['repeatpassword'] )) {
 		$error = 'Bitte Alle Felder ausf&uuml;llen';
 	} else {
-		$queryChange = "UPDATE vb_logindata SET L_PW='" . md5 ( $pwnew ) . "' WHERE L_ID=" . $lehrerid;
+		$newpw = password_hash( $pwnew, PASSWORD_DEFAULT );
+		if (password_verify($pwnew, $newpw)) {
+		$queryChange = "UPDATE vb_logindata SET L_PW='" . $newpw . "' WHERE L_ID=" . $lehrerid;
 		if (mysqli_query ( $db, $queryChange )) {
 			echo '<div id="changesucess">
-				<p>Ihr Passwort wurde erfolgreich ge&auml;ndert</p>
+				<p>Ihr Passwort wurde erfolgreich ge&auml;ndert<br>
+				<a href="index.php">Weiter</a></p>
 				</div>';
 			exit ();
 		}
-		;
+	}else {
+		exit('Es gab Problem beim erstellen des neuen Password. Ihr altes Passwort ist noch gültig');
+	}
 	}
 }
 echo '
 		<div class="container">
 <form action="changepw.php" method="post">
-			<input type="password" placeholder="Altes Passwort" name="oldpassword"><br>
+			<input type="password" placeholder="Altes Passwort/Nich eingeben!!" name="oldpassword"><br>
 			<input type="password" placeholder="Neues Passwort" name="newpassword"><br>
 			<input type="password" placeholder="Passwort wiederholen" name="repeatpassword"><br>
 			<input type="Submit" value="Passwort &auml;ndern">

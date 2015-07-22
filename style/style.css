@@ -266,6 +266,16 @@ header {
 	overflow: auto;
 }
 
+#changesucess {
+	margin: 4em auto;
+	border: 1px solid #000;
+	padding: 2em;
+	text-align: center;
+	font-size: 16;
+	line-height: 2em;
+	width: 15em;
+}
+
 /*Close-Button*/
 .namebox_close {
 	padding: 0px;
