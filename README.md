@@ -5,3 +5,6 @@ Verbalbeurteilungen are marks based on the behavior of the students. They are li
 You can view an fully working demo on:
 <a href="//gymcom.bplaced.net">gymcom.bplaced.net</a>
 
+##New Passwords necessary
+The login script now uses the Password API of PHP instead of MD5-Hash.
+The Users won't be able to log in if they haven't changed their PW inside of the newpw.php. This file can be removed from the server when everyone has changed their PW.

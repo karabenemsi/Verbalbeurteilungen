@@ -35,7 +35,7 @@ if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
   //---- Get Teacher-ID --END----//
 
 
-
+///////---------------Start Comment Here ------------------------///////
   // Query for USER
   $queryPW = "SELECT L_PW FROM vb_logindata WHERE L_ID=" . $lehrerid . "";
   $result = mysqli_query ( $db, $queryPW );
@@ -57,6 +57,9 @@ if ($_SERVER ['REQUEST_METHOD'] == 'POST') {
 		$_SESSION['login'] = true;
     $change = true;
 	}/* Hier fehlt noch das Passwort ist falsch */
+///////---------------Stop Comment Here ------------------------///////
+//----And decomment the following line!!!-----//
+//$change =true;
 
 
 	if ($pwnew != $pwrepeat) {
